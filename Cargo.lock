@@ -330,6 +330,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "flag_symmetry"
+version = "0.1.0"
+dependencies = [
+ "bytes",
+ "colored",
+ "image",
+ "reqwest",
+ "tokio",
+]
+
+[[package]]
 name = "flate2"
 version = "1.0.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -484,17 +495,6 @@ name = "heck"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
-
-[[package]]
-name = "hello_world"
-version = "0.1.0"
-dependencies = [
- "bytes",
- "colored",
- "image",
- "reqwest",
- "tokio",
-]
 
 [[package]]
 name = "hermit-abi"
