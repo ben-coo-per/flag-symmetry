@@ -9,7 +9,7 @@ use colored::*;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // let img = ImageReader::open("CH.png")?.decode()?;
-    let country_code = "CH";
+    let country_code = "ad";
     let img: DynamicImage = get_flag(country_code).await?;
 
     let symmetry = check_symmetry(&img);
