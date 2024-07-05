@@ -1,12 +1,12 @@
+use bytes::Bytes;
 use image::io::Reader as ImageReader;
 use image::{DynamicImage, ImageError, ImageFormat};
 use std::io::Cursor;
-use bytes::Bytes;
 
-const FLAG_SIZE: &'static str = "w20";
+const FLAG_SIZE: &'static str = "h40";
 const FLAG_API_URL: &'static str = "https://flagcdn.com";
 
-fn load_image_from_bytes(bytes: &Bytes) -> Result<DynamicImage, ImageError > {
+fn load_image_from_bytes(bytes: &Bytes) -> Result<DynamicImage, ImageError> {
     let cursor = Cursor::new(bytes);
     let mut reader = ImageReader::new(cursor);
     reader.set_format(ImageFormat::Png);
@@ -23,7 +23,11 @@ pub async fn get_flag(country_code: &str) -> Result<DynamicImage, reqwest::Error
     let response = reqwest::get(&url).await?;
 
     if !response.status().is_success() {
-        panic!("Failed to fetch the flag for country code {}. Status code: {}", country_code, response.status());
+        panic!(
+            "Failed to fetch the flag for country code {}. Status code: {}",
+            country_code,
+            response.status()
+        );
     }
 
     let bytes = response.bytes().await?;
