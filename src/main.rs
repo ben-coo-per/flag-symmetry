@@ -1,22 +1,57 @@
 /// A simple app that reports the symmetry of a flag.
 /// This only focuses on symmetry along the vertical axis.
 use image::{DynamicImage, GenericImageView};
-mod fetching_flags;
-use fetching_flags::get_flag;
-
-use colored::*;
+mod fetch_flags;
+mod consts {
+    pub mod countries;
+}
+use fetch_flags::get_flag;
+use prettytable::{Table, row};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // let img = ImageReader::open("CH.png")?.decode()?;
-    let country_code = "ad";
-    let img: DynamicImage = get_flag(country_code).await?;
+    let mut total_horizontal: i8 = 0;
+    let mut total_vertical: i8 = 0;
+    let mut total_full: i8 = 0;
+    let mut total_none: i8 = 0;
 
-    let symmetry = check_symmetry(&img);
-    println!("The flag is {} vertically symmetrical and {} horizontally symmetrical.", 
-        if symmetry.vertical { "✅".green() } else { "❌".red() },
-        if symmetry.horizontal { "✅".green() } else { "❌".red() }
-    );
+
+    // first 10 countries
+    for (code, name) in consts::countries::COUNTRIES.iter() {
+        let img: DynamicImage = get_flag(code).await?;
+
+        let symmetry = check_symmetry(&img);
+        let sym_val;
+
+        if symmetry.horizontal && symmetry.vertical { 
+            total_full += 1;
+            sym_val = "🪩"
+        } else if symmetry.vertical {
+            total_vertical += 1;
+            sym_val = "↔️"
+        } else if symmetry.horizontal { 
+            total_horizontal += 1;
+            sym_val = "↕️"
+        } else { 
+            total_none += 1;
+            sym_val= "❌"
+        }
+
+        println!("{} {}",
+            sym_val,
+            name
+        );
+    }
+
+
+    let mut table = Table::new();
+    println!("\nIn summary: ");
+    table.add_row(row!["🪩 Flags with full symmetry", total_full]);
+    table.add_row(row!["↕️ Flags with horizontal symmetry", total_horizontal]);
+    table.add_row(row!["↔️ Flags with vertical symmetry", total_vertical]);
+    table.add_row(row!["❌ Flags with no symmetry", total_none]);
+
+    table.printstd();
     Ok(())
 }
 
