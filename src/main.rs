@@ -11,25 +11,33 @@ use fetch_flags::get_flag;
 use prettytable::{row, Table};
 use symmetry::check_symmetry;
 
+const CHUNK_SIZE: usize = 120;
+const TIME_DELAY: u64 = 1;
+
+#[derive(Debug)]
+struct ReportingValue(i64, String);
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let mut total_horizontal: (i64, String) = (0, "".to_string());
-    let mut total_vertical: (i64, String) = (0, "".to_string());
-    let mut total_full: (i64, String) = (0, "".to_string());
-    let mut total_none: (i64, String) = (0, "".to_string());
+    let mut total_horizontal = ReportingValue(0, String::new());
+    let mut total_vertical = ReportingValue(0, String::new());
+    let mut total_full = ReportingValue(0, String::new());
+    let mut total_none = ReportingValue(0, String::new());
 
     // Loop through all countries, but chunk into groups to avoid hitting rate limits
     let countries = consts::countries::COUNTRIES
         .iter()
         .map(|(code, (name, emoji))| (code.to_string(), (name.to_string(), emoji.to_string())))
         .collect::<Vec<(String, (String, String))>>();
+
     let chunked_countries = countries
-        .chunks(120)
+        .chunks(CHUNK_SIZE)
         .into_iter()
         .collect::<Vec<&[(String, (String, String))]>>();
+
     for chunk in chunked_countries {
         // Sleep for a bit to avoid rate limiting
-        tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
+        tokio::time::sleep(tokio::time::Duration::from_secs(TIME_DELAY)).await;
         for (code, name) in chunk {
             let img: DynamicImage = get_flag(code).await?;
 
@@ -58,16 +66,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn update_table_total_value(table_total: &mut (i64, String), name: &(String, String)) {
+fn update_table_total_value(table_total: &mut ReportingValue, name: &(String, String)) {
     table_total.0 += 1;
     table_total.1.push_str(name.1.as_str());
 }
 
 async fn report_results(
-    total_full: (i64, String),
-    total_horizontal: (i64, String),
-    total_vertical: (i64, String),
-    total_none: (i64, String),
+    total_full: ReportingValue,
+    total_horizontal: ReportingValue,
+    total_vertical: ReportingValue,
+    total_none: ReportingValue,
 ) {
     let mut table = Table::new();
 
