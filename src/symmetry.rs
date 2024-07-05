@@ -11,12 +11,7 @@ fn check_vertical_symmetry(img: &DynamicImage) -> bool {
     // symmetrical if the left half is the same as the right half (think "A")
     let (width, height) = img.dimensions();
 
-    // Ensure the image has an even width
-    if width % 2 != 0 {
-        println!("width is not even: {}", width);
-        return false;
-    }
-
+    // note: we can ignore edge cases where image is not even since the u32 rounds down and we'll ignore the center pixel in each row
     let half_width = width / 2;
     for y in 0..height {
         for x in 0..half_width {
@@ -34,12 +29,7 @@ fn check_horizontal_symmetry(img: &DynamicImage) -> bool {
     // symmetrical if the top half is the same as the bottom half (think "D")
     let (width, height) = img.dimensions();
 
-    // Ensure the image has an even height
-    if height % 2 != 0 {
-        println!("height is not even: {}", height);
-        return false;
-    }
-
+    // note: height will always be even since we are specifying the height of the image
     let half_height = height / 2;
     for x in 0..width {
         for y in 0..half_height {
