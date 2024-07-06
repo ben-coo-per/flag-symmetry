@@ -5,22 +5,22 @@ During a long car ride, a friend and I were joking about how [the whole flag con
 This got me thinking more broadly about flag symmetry. Plus, I've been wanting an excuse to learn Rust, so voilà!
 
 ### In summary:
+
 ```
 +-----------------------------------+-----+
-| 🪩 Flags with full symmetry       | 23  |
+| 🪩 Flags with full symmetry       | 14  |
 +-----------------------------------+-----+
-| ↕️ Flags with horizontal symmetry  | 24  |
+| ↕️ Flags with horizontal symmetry  | 23  |
 +-----------------------------------+-----+
-| ↔️ Flags with vertical symmetry    | 43  |
+| ↔️ Flags with vertical symmetry    | 42  |
 +-----------------------------------+-----+
-| ❌ Flags with no symmetry         | 162 |
+| ❌ Flags with no symmetry         | 173 |
 +-----------------------------------+-----+
 
-Full symmetry flags       🇳🇬🇲🇰🇱🇺🇬🇪🇦🇷🇨🇭🇭🇺🇧🇼🇬🇳🇸🇱🇵🇪🇯🇵🇮🇱🇬🇬🇬🇲🇵🇼🇱🇻🇦🇹🇲🇱🇹🇭🇳🇱🇫🇲🇯🇲
-Horizontal symmetry flags 🇶🇦🇩🇿🇹🇳🇷🇴🏳️🇸🇪🇨🇮🇮🇸🇲🇹🇧🇩🇮🇪🇦🇽🇫🇷🇩🇰🇲🇫🇹🇩🇸🇯🇧🇪🇧🇭🇮🇹🇵🇭🇫🇴🇳🇴🇫🇮
-Vertical symmetry flags   🇮🇩🇮🇷🇪🇬🇧🇮🇵🇱🇬🇭🇩🇪🇷🇺🇦🇲🇧🇫🇲🇨🇱🇹🇨🇦🇲🇷🇲🇦🇪🇹🇻🇨🇰🇪🇲🇲🇰🇬🇬🇦🇯🇪🇪🇺🇻🇳🇮🇳🇲🇺🇧🇬🇨🇴🇸🇷🇸🇴🇷🇪🇹🇯🇱🇦🇾🇪🇰🇭🇷🇼🇪🇪🇳🇮🇸🇾🇺🇦🇻🇪🇳🇪🇭🇳
-No symmetry flags         🇦🇮🇪🇭🇱🇮🇳🇫🇳🇵🇲🇪🇧🇦🇹🇿🇬🇶🇸🇻🇹🇲🇸🇮🇰🇲🇺🇸🇲🇭🇲🇽🇸🇿🇨🇱🇹🇰🇺🇾🇵🇦🇵🇲🇹🇱🇱🇾🇭🇷🇸🇭🇫🇯🇧🇲🇸🇳🇨🇻🇵🇸🇦🇴🇮🇲🇬🇩🇵🇳🇹🇴🇦🇩🇵🇬🏳️🇧🇹🇲🇻🇰🇳🇲🇾🇬🇵🇪🇸🇲🇬🇧🇯🇷🇸🇹🇹🇦🇿🇧🇱🇬🇫🇸🇽🇧🇳🇰🇿🇬🇮🇳🇺🇵🇹🇹🇨🇬🇼🇦🇪🇬🇸🇸🇲🇲🇶🏳️🇾🇹🇲🇩🇵🇰🇬🇺🇮🇶🇵🇫🇴🇲🇻🇬🇸🇧🇳🇦🇳🇨🇩🇴🇦🇫🇲🇿🇦🇶🇻🇦🇦🇺🇺🇬🇿🇲🇲🇴🇬🇱🇬🇾🇭🇰🇧🇾🇱🇷🇩🇲🇼🇸🇲🇼🇸🇰🇫🇰🇮🇴🇨🇷🇿🇼🏳️🇦🇼🇪🇷🇧🇸🇵🇾🇱🇧🇨🇬🇬🇧🇲🇸🇻🇺🇸🇨🇰🇵🇧🇧🇨🇺🇭🇹🇰🇼🇨🇾🇧🇿🇨🇫🇲🇳🇸🇩🇿🇦🇨🇿🇰🇷🇻🇮🇦🇬🇸🇹🇦🇱🇧🇴🇨🇲🇧🇷🇨🇰🇵🇷🇱🇨🇨🇳🇰🇮🇽🇰🇱🇰🇹🇼🇰🇾🏳️🇬🇹🇹🇻🇹🇬🇸🇦🇱🇸🇦🇸🇬🇷🏳️🇳🇷🇨🇩🇺🇳🇯🇴🇩🇯🇲🇵🇪🇨🇼🇫🇨🇼🇸🇸🇺🇿🇸🇬🇹🇷🇳🇿🏳️
+Full symmetry flags: 🇵🇪🇯🇲🇯🇵🇹🇭🇫🇲🇱🇻🇨🇭🇧🇼🇮🇱🇦🇹🇲🇰🇬🇬🇳🇬🇬🇪
+Horizontal symmetry flags: 🇬🇾🇦🇽🇵🇼🇬🇳🇲🇫🇫🇴🇮🇪🇫🇷🇧🇪🇫🇮🇹🇩🏳️🇨🇮🇸🇪🇩🇰🇧🇭🇸🇯🇲🇱🇮🇸🇳🇴🇶🇦🇷🇴🇮🇹
+Vertical symmetry flags: 🇬🇦🇸🇷🇷🇪🇮🇳🇸🇴🇲🇦🇱🇹🇷🇺🇹🇯🇭🇺🇩🇪🇲🇲🇻🇳🇸🇾🇳🇱🇧🇬🇻🇪🇸🇱🇲🇨🇱🇺🇭🇳🇦🇱🇨🇴🇲🇺🇮🇩🇬🇭🇬🇲🇧🇮🇲🇷🇪🇪🇺🇦🇱🇦🇦🇬🇲🇴🇪🇺🇧🇧🇱🇨🇵🇱🇦🇲🇨🇦🇳🇪🇾🇪
+No symmetry flags: 🇿🇼🇹🇨🇭🇰🇻🇨🇦🇸🇳🇺🇮🇴🇱🇾🇲🇶🇧🇲🇨🇰🇧🇿🇸🇬🇪🇬🇵🇦🇿🇦🇰🇬🇯🇪🇼🇫🇬🇮🇳🇷🇯🇴🇵🇭🇺🇿🇧🇩🇪🇸🇭🇷🇸🇧🇪🇭🇰🇷🇹🇬🇲🇳🇪🇹🇳🇮🇹🇹🇳🇫🇨🇼🇸🇸🇧🇯🇱🇰🇧🇴🇦🇮🇵🇬🇨🇻🇰🇵🇮🇷🇸🇮🇦🇺🏳️🇼🇸🇧🇸🏳️🇧🇫🇲🇭🇰🇿🇺🇳🇳🇨🇵🇹🇨🇱🇬🇧🇨🇬🇬🇫🇨🇩🇬🇵🇭🇹🇲🇪🇦🇼🇲🇽🇷🇸🇹🇲🇧🇦🇲🇹🇱🇮🇰🇮🇫🇰🇵🇳🇹🇰🇳🇦🇦🇿🇨🇷🇨🇿🇬🇱🇸🇽🇦🇪🇨🇫🏳️🇰🇲🇹🇷🇸🇿🇬🇹🇲🇬🇨🇳🇦🇷🇺🇸🇧🇱🇳🇵🇰🇼🇫🇯🏳️🇰🇾🇲🇾🇬🇸🇬🇺🇾🇹🇵🇫🇸🇹🇨🇾🇵🇸🇹🇳🇺🇾🇮🇲🇺🇬🇹🇱🇧🇳🏳️🇮🇶🇲🇩🇧🇹🇧🇾🇪🇨🇸🇩🇸🇦🇴🇲🇱🇧🇦🇶🇰🇳🇰🇪🇲🇼🇬🇼🇪🇷🇬🇶🇩🇲🇰🇭🇸🇲🇵🇰🇽🇰🇩🇯🇹🇼🇷🇼🇨🇲🇦🇩🇸🇭🇻🇬🇹🇴🇦🇴🇬🇷🇸🇻🇲🇿🇨🇺🇸🇨🇻🇦🇵🇾🇸🇰🇿🇲🇲🇸🇹🇻🇹🇿🇵🇷🇻🇮🇩🇴🇩🇿🇲🇵🇳🇿🇱🇷🇻🇺🇱🇸🇬🇩🇸🇳🇲🇻🇧🇷🇦🇫🏳️🇵🇲
 ```
-*flags that do not have an emoji for are shown as 🏳️
 
-*also note that these are fuzzy-matched so there are some flags that are ***sooooo close*** to being symmetric that I let them in (looking at you Argentina 🇦🇷)
+\*flags that do not have an emoji for are shown as 🏳️

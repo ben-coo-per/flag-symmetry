@@ -3,7 +3,7 @@ use image::io::Reader as ImageReader;
 use image::{DynamicImage, ImageError, ImageFormat};
 use std::io::Cursor;
 
-const FLAG_SIZE: &'static str = "h40";
+const FLAG_SIZE: &'static str = "h80";
 const FLAG_API_URL: &'static str = "https://flagcdn.com";
 
 fn load_image_from_bytes(bytes: &Bytes) -> Result<DynamicImage, ImageError> {
