@@ -30,7 +30,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Create a CSV file to store the results
     let mut result_csv = Writer::from_path("results.csv")?;
-    result_csv.write_record(&["Flag", "Country Name", "Symmetry"])?;
+    result_csv.write_record(&["Flag", "Country name", "Line of symmetry"])?;
 
     // Loop through all countries, but chunk into groups to avoid hitting rate limits
     let countries = consts::countries::COUNTRIES
@@ -98,8 +98,14 @@ async fn report_result_summary(
     println!("\n\n\n");
     println!("In summary: ");
     table.add_row(row!["🪩 Flags with full symmetry", total_full.0]);
-    table.add_row(row!["↕️ Flags with horizontal symmetry", total_horizontal.0]);
-    table.add_row(row!["↔️ Flags with vertical symmetry", total_vertical.0]);
+    table.add_row(row![
+        "↕️ Flags with horizontal line symmetry",
+        total_horizontal.0
+    ]);
+    table.add_row(row![
+        "↔️ Flags with vertical line symmetry",
+        total_vertical.0
+    ]);
     table.add_row(row!["❌ Flags with no symmetry", total_none.0]);
 
     table.printstd();
@@ -108,7 +114,7 @@ async fn report_result_summary(
     tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
     println!("\n\n\n");
     println!("Full symmetry: {}", total_full.1);
-    println!("Horizontal symmetry: {}", total_horizontal.1);
-    println!("Vertical symmetry: {}", total_vertical.1);
+    println!("Horizontal line symmetry: {}", total_horizontal.1);
+    println!("Vertical line symmetry: {}", total_vertical.1);
     println!("No symmetry: {}", total_none.1);
 }
