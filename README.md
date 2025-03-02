@@ -8,6 +8,8 @@ The full results can be viewed in `results.csv`
 
 ### In summary:
 
+[Instagram Post](https://www.instagram.com/p/C9F03HevOH7)
+
 ```
 +----------------------------------------+-----+
 | 🪩 Flags with full symmetry            | 14  |
